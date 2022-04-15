@@ -14,8 +14,8 @@ let fs = require('fs')
 let chalk = require('chalk')
 
 global.linkGC = ['https://chat.whatsapp.com/EVCGfzxLWfp81n0WhmVklH', 'https://chat.whatsapp.com/FnNAbem8o6r4pgLhSdO8Q9', 'https://chat.whatsapp.com/HBhy7rVae3o0PkIfkhvs2N'] // ganti jadi group lu
-global.owner = ['60189830350', '60149431385', '60189830350'] // Masukan nomot kalian
-global.mods = ['60189830350', '60149431385'] // Moderator
+global.owner = ['6285713041886', '6285713041886', '6285713041886'] // Masukan nomot kalian
+global.mods = ['6285713041886', '6285713041886'] // Moderator
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
 global.APIs = { // API Prefix
   // name: 'https://website'
@@ -54,8 +54,8 @@ global.APIKeys = { // APIKey Here
 const spack = fs.readFileSync("lib/exif.json")
 const stickerpack = JSON.parse(spack)
 if (stickerpack.spackname == '') {
-  var sticker_name = 'LynXzy🥀'
-  var sticker_author = '©LynXzy🥀    ?'
+  var sticker_name = 'Bot Whatsapp'
+  var sticker_author = '© ᴹᴿ᭄ Fachri botz ×፝֟͜×'
 } else {
   var sticker_name = stickerpack.spackname
   var sticker_author = stickerpack.sauthor
@@ -73,16 +73,16 @@ global.packname = sticker_name
 global.author = sticker_author
 
 // silakan di ganti klo mau
-global.wait = 'Sabar...'
+global.wait = 'Tunggu Jangan Kemana Mana Ya...'
 global.rpg = 'Fitur Rpg Dimatikan\nKetik *!enable* *rpg* untuk menggunakan fitur ini!\nKalo Mau main Disini aja\nhttps://chat.whatsapp.com/EheAWPrQMhV25xW0N7l7WD'
 global.nsfw = '“Katakanlah kepada orang laki-laki yang beriman: Hendaklah mereka menahan pandanganya, dan memelihara kemaluannya; … Katakanlah kepada wanita yang beriman: Hendaklah mereka menahan pandangannya, dan kemaluannya, dan janganlah mereka Menampakkan perhiasannya, kecuali yang (biasa) nampak dari padany,” \n(TQS. Al-Nur [24]: 30-31).'
 global.eror = '_*Error*_'
 
 global.fla = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&doScale=true&scaleWidth=500&scaleHeight=500&fontsize=100&fillTextType=0&backgroundColor=%23101820&text='
-global.watermark = '©LynXzy🥀    ?' //change the watermark (beberapa harus manual)
+global.watermark = '© ᴹᴿ᭄ Fachri botz ×፝֟͜×' //change the watermark (beberapa harus manual)
 
 // Ubah saja
-global.image = 'https://telegra.ph/file/a60af91a1c5b4e12967fd.jpg'//thumbnail
+global.image = 'https://i.ibb.co/y6TRVt4/virgam.png'//thumbnail
 global.bank = 'https://telegra.ph/file/d5ddf4cc627bb0e6bc420.jpg'
 global.kandang = 'https://telegra.ph/file/67a6ee607d03a4e52757d.jpg'
 global.kolam = 'https://telegra.ph/file/5aa5dfa3394477e11fb18.jpg'
