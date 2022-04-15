@@ -12,8 +12,8 @@ key: {
 						"mimetype": "image/jpeg",
 						"jpegThumbnail": fs.readFileSync('./src/IMG-20220322-WA0026.jpg') //Gambarnye
 					},
-					"title": "LynXzy🥀", //Kasih namalu 
-					"description": "SELF BOT", 
+					"title": "ᴹᴿ᭄ Fachri botz ×፝֟͜×", //Kasih namalu 
+					"description": "Bot Whatsapp", 
 					"currencyCode": "USD",
 					"priceAmount1000": "2000",
 					"retailerId": "Ghost",
@@ -33,7 +33,7 @@ const ftroli = {
                             itemCount : 1,
                             status: 1,
                             surface : 1,
-                            message: 'LanXzy🥀', //Kasih namalu
+                            message: 'ᴹᴿ᭄ Fachri botz ×፝֟͜×', //Kasih namalu
                             orderTitle: 'Bang',
                             thumbnail: fs.readFileSync('./src/IMG-20220322-WA0026.jpg'), //Gambarnye
                             sellerJid: '0@s.whatsapp.net'
