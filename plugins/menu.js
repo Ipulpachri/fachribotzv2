@@ -9,8 +9,7 @@ const groups = chats.filter(v => v.jid.endsWith('g.us'))
 const defaultMenu = {
   before: `
 ╭══════════════════
-║╭──❉[ *Hai, %name!* ]❉──
-║│➸ 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 LynnXzy
+║╭──❉[ *Hai, Kak %name!* ]❉──
 ║│➸ Tersisa *%limit Limit*
 ║│➸ Role *%role*
 ║│➸ Level 
@@ -29,7 +28,6 @@ const defaultMenu = {
 ║│➸ Waktu: *%time*
 ║│➸ Uptime: *%uptime (%muptime)*
 ║│➸ Database: %rtotalreg dari %totalreg
-║│➸ Sc: github.com/LynnXzy/scbotz-v1
 ║╰──────────────────
 ╰════════════════════
 %readmore`.trimStart(),
@@ -37,8 +35,6 @@ const defaultMenu = {
   body: '┃ ✾ %cmd %islimit %isPremium',
   footer: '┗━ꕥ',
   after: `
-*LynnBot@^4.01*
-${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
@@ -228,7 +224,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 			return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
                         "title": `*${ucapan()}, ${name}*`.trim(),
-                        "description": `┏━━〔 𝐒𝐓𝐀𝐓𝐔𝐒 〕━⬣
+                        "description": `┏━━〔 FachriBotz 〕━⬣
 ┃⬡ 𝘼𝙠𝙩𝙞𝙛 𝙎𝙚𝙡𝙖𝙢𝙖 _*${uptime}*_
 ┃⬡ 𝘽𝙖𝙩𝙚𝙧𝙖𝙞 _*${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}*_
 ┃⬡ _*${Object.keys(global.db.data.users).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖
@@ -238,7 +234,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 ┃⬡ _*${Object.entries(global.db.data.users).filter(user => user[1].banned).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖 𝙏𝙚𝙧𝙗𝙖𝙣𝙣𝙚𝙙
 ┃⬡ Note : Fitur RPG Dalam Masa Uji Coba
 ┗━━━━━━━━⬣`.trim(),
-                        "footerText": "𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 LynnXzy",
+                        "footerText": "© 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 Fachri",
                         "buttonText": "𝖪𝗅𝗂𝗄 𝖣𝗂𝗌𝗂𝗇𝗂",
                         "listType": "SINGLE_SELECT",
                         "sections": [
@@ -248,7 +244,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "description": "Status dan informasi Bot.",
                                     "rowId": ".botstatus"
                                 }, {
-                                    "title": "❗ Rules",
+                                    "title": "❗Rules",
                                     "description": "Baca rules sebelum menggunakan bot.",
                                     "rowId": ".rules"
                                 }, {
@@ -292,7 +288,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "rowId": "#? xp"
                                 }, { 
                                     "title": "🔞 NSFW",
-                                    "description": "/menu Bokep",
+                                    "description": "Jangan Di Pencet, Tobat banh:V",
                                     "rowId": "#? nsfw"
                                 }, { 
                                     "title": "🖼️ Random Image",
@@ -359,8 +355,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "description": "Ubah Suaramu",
                                     "rowId": "#? audio"
                                 }, { 
-                                    "title": "🤖 Jadi Bot",
-                                    "description": "Numpang",
+                                    "title": "🤖 Multi Sessions",
+                                    "description": "Menu yg bisa jadibot",
                                     "rowId": "/menu jadibot"
                                 }, { 
                                     "title": "⛩️ Anime",
@@ -379,11 +375,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "description": "Menu Khusus Owner",
                                     "rowId": "#? owner"
                                 }],
-                                "title": "⟣──────────────❲  All-Menu  ❳──────────────⟢"
+                                "title": "⟣────────────❲  Menu FachriBotz  ❳────────────⟢"
                             }, {
                                 "rows": [{
-                                    "title": "👩🏻‍💼Owner bot",
-                                    "description": "Yang Punya",
+                                    "title": "👥 Owner bot",
+                                    "description": "Pemilik FachriBotz",
                                     "rowId": ".owner"
                                 }, {
                                     "title": "💰 Donasi",
@@ -394,7 +390,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "description": "Terimakasih untuk user yang telah menggunakan bot, jika ada kesalahan atau permintaan bisa chat ke nomor owner\nNote: chat P/main² tidak akan di respon(user bisa terkena banned/block)",
                                     "rowId": ".creator"
                                 }, {
-                                    "title": "❤️Thanks To",
+                                    "title": "❤️ Thanks To",
                                     "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam bot",
                                     "rowId": ".tqto"
                                 }],
