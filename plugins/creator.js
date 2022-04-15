@@ -8,7 +8,7 @@ remoteJid: 'status@broadcast'
 },
 message: {
 locationMessage: {
-name: '©LynXzy🥀',
+name: '© ᴹᴿ᭄ Fachri botz ×፝֟͜×,
 jpegThumbnail: fs.readFileSync('./src/IMG-20220322-WA0026.jpg')
   }
  }
