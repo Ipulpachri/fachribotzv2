@@ -253,7 +253,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "rowId": ".sewabot"
                                 }, {
                                     "title": "💌 Group Bot",
-                                    "description": "Official Group Bot LynnXzy.",
+                                    "description": "Official Group FachriBotz.",
                                     "rowId": ".gcbot"
                                 }],
                                 "title": "⟣─────────❲ Tentang Bot dan lainnya ❳──────────⟢"
@@ -399,7 +399,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                         ], "contextInfo": 
 						{ "stanzaId": m.key.id,
                         "participant": "0@s.whatsapp.net",
-                        "remoteJid": "60149431385-1618206438@g.us",
+                        "remoteJid": "6283136505591-1614953337@g.us",
                         "quotedMessage": m.message
 						}
                     }
