@@ -12,7 +12,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
   let neww = Math.round(performance.now())
   let str = `
 ╭═══════════════════════
-║╭─❉〘 ${package.name} 〙❉─
+║╭─❉〘 FachriBotz 〙❉─
 ║│➸ *Versi* : 1.5.0
 ║│➸ *Issue:* ${package.bugs.url}
 ║│➸ *Prefix:* ' ${usedPrefix} '
@@ -35,7 +35,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
 ║│➸ Anda di database kami
 ║╰─────────────────
 ╰══════════════════════`.trim()
-     await conn.send2ButtonLoc(m.chat, await(await fetch(image)).buffer(), str, '©LynXzy💌', 'Owner', '.owner', 'Menu', '.menu', m)
+     await conn.send2ButtonLoc(m.chat, await(await fetch(image)).buffer(), str, '© ᴹᴿ᭄ Fachri botz ×፝֟͜×', 'Owner', '.owner', 'Menu', '.menu', m)
 }
 handler.help = ['infobot']
 handler.tags = ['info']
