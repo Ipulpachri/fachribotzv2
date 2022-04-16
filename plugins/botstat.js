@@ -11,9 +11,9 @@ let handler = async (m, { conn }) => {
     let str = `
 ╭═════════════════
 ║╭─❉ [𝐈𝐍𝐅𝐎𝐁𝐎𝐓] ❉───
-║│➸ NameBot: LynnXzy
-║│➸ Main Owner: LanXzy
-║│➸ Operated Since: Lupa gw
+║│➸ NameBot: FachriBotz
+║│➸ Main Owner: Fachri
+║│➸ Operated Since: Jum'at, 15 April 2022
 ║│➸ Language Used: Nodejs (JS)
 ║│➸ Server: Heroku
 ║╰───────────────
@@ -45,7 +45,7 @@ let handler = async (m, { conn }) => {
 ║│➸ ${nsfw ? '✅' : '❌'} *Mode Nsfw*
 ║╰─────────────────
 ╰══════════════════`.trim()
-     await conn.send2ButtonLoc(m.chat, await(await fetch(image)).buffer(), str, '©LynXzy💌', 'Owner👤', '.owner', 'Menu🧾', '.menu', m)
+     await conn.send2ButtonLoc(m.chat, await(await fetch(image)).buffer(), str, '© ᴹᴿ᭄ Fachri botz ×፝֟͜×', 'Owner👤', '.owner', 'Menu🧾', '.menu', m)
 }
 handler.help = ['botstatus']
 handler.tags = ['info']
