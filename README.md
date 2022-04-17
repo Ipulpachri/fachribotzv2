@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://telegra.ph/file/809410340f33f15544905.png" alt="LynnXzy🤸" width="200"/>
+<img src="https://camo.githubusercontent.com/c20b81f27e201ce526cc8f410e68a9bf83c9e2afa0a6e238b35e8932f45e9518/68747470733a2f2f692e6962622e636f2f6336527a4d37672f363837343734373037333361326632663664363536343639363132653637363937303638373932653633366636643266366436353634363936313266333833333336343836393461363333373730363737613739333836393465353834333665326636372e676966" alt="FachriBotz" width="200"/>
 
 
 <p align="center"> <a href="https://Lexxy24.github.io"> <img src="https://readme-typing-svg.herokuapp.com?size=15&width=280&lines=Created+By+Fachri+Awokkawok" alt="FachriBotz" /> </a> </p>
@@ -79,5 +79,5 @@ node .
 
 
 # My Sosial 
-- [Group ](https://chat.whatsapp.com/EheAWPrQMhV25xW0N7l7WD) 
-- [Whatsapp ](https://wa.me/6018983035Botz0)
+- [Group ](https://chat.whatsapp.com/) 
+- [Whatsapp ](https://wa.me/6285713041886)
