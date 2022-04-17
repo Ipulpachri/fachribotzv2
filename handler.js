@@ -662,9 +662,9 @@ global.dfail = (type, m, conn) => {
   }[type]
   if (botAdmin) return conn.sendButton(m.chat, botAdmin, 'Lupa Saya', 'Eh iya ya', 'Nanii', m)
   let unreg = {
-    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar LynXzy.16*`
+    unreg: `Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Fachri.15*`
   }[type]
-  if (unreg) return conn.sendButton(m.chat, `Haii ${name} 👋 Sebelum menggunakan bot ini Harap Verify Terlebih dahulu`, watermark, 'Verify', `#daftar ${name}.17`, { key: { fromMe: false, remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' }, message: { orderMessage: { message: `©LynnXzy💌_\nJam ${time}`, itemCount: 2022, thumbnail: fs.readFileSync('./src/93278eaa12fd253a4fe3cc08a0b219bc.jpg')}}})
+  if (unreg) return conn.sendButton(m.chat, `Haii Kak, ${name} 👋 Sebelum menggunakan bot ini Harap *Register* Terlebih dahulu`, watermark, 'Register', `#daftar ${name}.15`, { key: { fromMe: false, remoteJid: 'status@broadcast', participant: '0@s.whatsapp.net' }, message: { orderMessage: { message: `© ᴹᴿ᭄ Fachri botz ×፝֟͜×_\nJam ${time}`, itemCount: 2022, thumbnail: fs.readFileSync('./src/93278eaa12fd253a4fe3cc08a0b219bc.jpg')}}})
 }
 
 let chalk = require('chalk')
