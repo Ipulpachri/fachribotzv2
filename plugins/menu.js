@@ -10,29 +10,29 @@ const defaultMenu = {
   before: `
 ╭══════════════════
 ║╭──❉[ *Hai, Kak %name!* ]❉──
-║│➸ Tersisa *%limit Limit*
-║│➸ Role *%role*
-║│➸ Level 
-║│➸ *%level (%exp / %maxexp)* [%xp4levelup]
-║│➸ %totalexp XP secara Total
+║│⎙ Tersisa *%limit Limit*
+║│⎙ Role *%role*
+║│⎙ Level 
+║│⎙ *%level (%exp / %maxexp)* [%xp4levelup]
+║│⎙ %totalexp XP secara Total
 ║│➸ 🄻  = *Limit* 
 ║│➸ 🄿 = *Premium*
 ║╰────────────────
 ╰══════════════════
 ╭══════════════════
 ║╭──❉[ 𝙒𝙖𝙠𝙩𝙪 ]❉───
-║│➸ Tanggal: 
-║│➸ *%week %weton, %date*
-║│➸ Tanggal Islam:
-║│➸ *%dateIslamic*
-║│➸ Waktu: *%time*
-║│➸ Uptime: *%uptime (%muptime)*
-║│➸ Database: %rtotalreg dari %totalreg
+║│⎙ Tanggal: 
+║│⎙ *%week %weton, %date*
+║│⎙ Tanggal Islam:
+║│⎙ *%dateIslamic*
+║│⎙ Waktu: *%time*
+║│⎙ Uptime: *%uptime (%muptime)*
+║│⎙ Database: %rtotalreg dari %totalreg
 ║╰──────────────────
 ╰════════════════════
 %readmore`.trimStart(),
   header: '┏━━ꕥ〔 *%category* 〕ꕥ━⬣',
-  body: '┃ ✾ %cmd %islimit %isPremium',
+  body: '┃ ⎙ %cmd %islimit %isPremium',
   footer: '┗━ꕥ',
   after: `
 `,
