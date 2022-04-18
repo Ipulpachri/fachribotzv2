@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 let handler = async (m, { conn }) => await conn.sendButtonLoc(m.chat, await (await fetch(image)).buffer(), `
 ◪ 🖥️ *SCRIPT BOT*
 │ *SC Recode :* 
-│ ╰ *Private*
+│ ╰ https://github.com/Ipulpachri/fachribotzv2
 │ *SC Ori :* 
 │ ╰ https://github.com/LynnXzy/scbotz-v1
 │ *RestApi :* 
