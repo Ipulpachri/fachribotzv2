@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { conn }) => conn.sendButtonLoc(m.chat, await (await fetch(bank)).buffer(), `
-*───────「 *DONATE* 」 ─────*
+*─────── 「 DONATE 」 ─────*
 
 ╭═══════════════
 ║╭───✧ [ DONASI • NON MONEY ] ✧───
@@ -10,8 +10,8 @@ let handler = async (m, { conn }) => conn.sendButtonLoc(m.chat, await (await fet
 ║│➸ _*Dana*_✅: 
 ║│- 
 ║│
-║│Jika Sudah Kirim Bukti Ss Tf Ke Owner
-║│Donasi Kalian Sangat Berarti 😁
+║│ Jika Sudah Kirim Bukti Ss Tf Ke Owner
+║│ Donasi Kalian Sangat Berarti 😁.
 ║│
 ║│➸ _*OWNER*_
 ║│- wa.me/6285713041886
