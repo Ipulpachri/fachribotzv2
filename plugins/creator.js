@@ -30,7 +30,7 @@ let list = []
 ]
 const buttonsMessage = {
     contentText: `
-Donasi/Sewa? Chat Owner
+Hai Kak, Ada Apa Ya Nyari Owner?
 `.trim(),    footerText: ``,
     buttons: buttons,
   headerType: 'EMPTY'
