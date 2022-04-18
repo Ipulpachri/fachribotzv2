@@ -9,30 +9,28 @@ const groups = chats.filter(v => v.jid.endsWith('g.us'))
 const defaultMenu = {
   before: `
 ╭══════════════════
-║╭──✧ 「 *Hai, Kak %name!* 」 ✧──
-║│❍ Tersisa *%limit Limit*
-║│❍ Role: *%role*
-║│❍ Level: 
-║│❍ *%level (%exp / %maxexp)* [%xp4levelup]
-║│❍ %totalexp XP secara Total
-║│➸ 🄻  = *Limit* 
-║│➸ 🄿 = *Premium*
+║╭──✧「 *INFO USER* 」✧──
+║│➵͜͡✪ Tersisa *%limit Limit*
+║│➵͜͡✪ Role: *%role*
+║│➵͜͡✪ Level: 
+║│➵͜͡✪ *%level (%exp / %maxexp)* [%xp4levelup]
+║│➵͜͡✪ %totalexp XP secara Total
 ║╰────────────────···✧
 ╰══════════════════
 ╭══════════════════
-║╭──✧ 「 𝙒𝙖𝙠𝙩𝙪 」 ✧───
-║│❍ Tanggal: *%week %weton, %date*
-║│❍ Tanggal Islam: *%dateIslamic*
-║│❍ Waktu: *%time*
-║│❍ Uptime: *%uptime (%muptime)*
-║│❍ Database: %rtotalreg dari %totalreg
-║│❍ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
+║╭──✧「 *TODAY&INFO* 」✧───
+║│➵͜͡✪ Tanggal: *%week %weton, %date*
+║│➵͜͡✪ Tanggal Islam: *%dateIslamic*
+║│➵͜͡✪ Waktu: *%time*
+║│➵͜͡✪ Uptime: *%uptime (%muptime)*
+║│➵͜͡✪ Database: %rtotalreg dari %totalreg
+║│➵͜͡✪ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
 ║╰──────────────────···✧
 ╰════════════════════
 %readmore`.trimStart(),
-  header: '┏━━ꕥ 「 *%category* 」 ꕥ━⬣',
+  header: '┏━━✧「 *%category* 」✧━━',
   body: '┃ ⎙ %cmd %islimit %isPremium',
-  footer: '┗━ꕥ',
+  footer: '┗━···✧',
   after: `
 `,
 }
@@ -223,7 +221,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 			return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
                         "title": `*${ucapan()}, ${name}*`.trim(),
-                        "description": `┏━━ 「 *FachriBotz* 」 ━⬣
+                        "description": `┏━━「 *FachriBotz* 」━⬣
 ┃✾ 𝘼𝙠𝙩𝙞𝙛 𝙎𝙚𝙡𝙖𝙢𝙖 _*${uptime}*_
 ┃✾ 𝘽𝙖𝙩𝙚𝙧𝙖𝙞 _*${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}*_
 ┃✾ _*${Object.keys(global.db.data.users).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖
@@ -234,7 +232,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 ┃⎙ Note : Bot delay, Jangan spam !!
 ┗━━━━━━━━⬣`.trim(),
                         "footerText": "© 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 Fachri",
-                        "buttonText": "𝖪𝗅𝗂𝗄 𝖣𝗂𝗌𝗂𝗇𝗂",
+                        "buttonText": "Klik Disini",
                         "listType": "SINGLE_SELECT",
                         "sections": [
                             {
@@ -458,8 +456,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                .replace(/%islimit/g, menu.limit ? '🄻' : '')
-                .replace(/%isPremium/g, menu.premium ? '🄿' : '')
+                .replace(/%islimit/g, menu.limit ? 'Limit' : '')
+                .replace(/%isPremium/g, menu.premium ? 'Premium' : '')
                 .trim()
             }).join('\n')
           }),
