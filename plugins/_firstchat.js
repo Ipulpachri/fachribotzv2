@@ -14,26 +14,27 @@ handler.all = async function (m) {
     await conn.send3ButtonLoc(m.chat, await(await fetch(image)).buffer(), `
 Hai kak, ${ucapan()}
 
-${user.banned ? 'kamu dibanned' : `Saya adalah FachriBotz, salah satu Bot Whatsapp. harap tidak spam/telpon/minta save ke nomor ini. Ada yang bisa saya bantu?`}
-`.trim(), watermark, user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? ',owner' : '.menu', 'Panduan penggunaan', '.tutorbot', 'Verify', '.daftar undefined.16', m)
+${user.banned ? 'kamu dibanned' : `Saya adalah *FachriBotz*, salah satu Bot Whatsapp. harap tidak spam/telpon/minta save ke nomor ini. Ada yang bisa saya bantu?`}
+`.trim(), jika button ga keliatan, Ketik #menu, user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? ',owner' : '.menu', 'Panduan penggunaan', '.tutorbot', 'Verify', '.daftar undefined.15', m)
     user.pc = new Date * 1
 }
 
 module.exports = handler
 function ucapan() {
     const time = moment.tz('Asia/Jakarta').format('HH')
-    res = "Selamat dinihari"
-    if (time >= 4) {
-        res = "Selamat pagi"
-    }
-    if (time > 10) {
-        res = "Selamat siang"
-    }
-    if (time >= 15) {
-        res = "Selamat sore"
-    }
-    if (time >= 18) {
-        res = "Selamat malam"
-    }
-    return res
+  res = "Selamat dinihari🌃"
+  if (time >= 4) {
+    res = "Selamat pagi🌄"
+  }
+  if (time > 10) {
+    res = "Selamat siang🌄"
+  }
+  if (time >= 15) {
+    res = "Selamat sore🌇"
+  }
+  if (time >= 18) {
+    res = "Selamat malam🌉"
+  }
+  return res
 }
+
