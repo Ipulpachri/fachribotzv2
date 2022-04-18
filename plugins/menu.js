@@ -9,7 +9,7 @@ const groups = chats.filter(v => v.jid.endsWith('g.us'))
 const defaultMenu = {
   before: `
 ╭══════════════════
-║╭──✧ [ *Hai, Kak %name!* ] ✧──
+║╭──✧ 「 *Hai, Kak %name!* 」 ✧──
 ║│❍ Tersisa *%limit Limit*
 ║│❍ Role: *%role*
 ║│❍ Level: 
@@ -20,16 +20,17 @@ const defaultMenu = {
 ║╰────────────────···✧
 ╰══════════════════
 ╭══════════════════
-║╭──✧ [ 𝙒𝙖𝙠𝙩𝙪 ] ✧───
+║╭──✧ 「 𝙒𝙖𝙠𝙩𝙪 」 ✧───
 ║│❍ Tanggal: *%week %weton, %date*
 ║│❍ Tanggal Islam: *%dateIslamic*
 ║│❍ Waktu: *%time*
 ║│❍ Uptime: *%uptime (%muptime)*
 ║│❍ Database: %rtotalreg dari %totalreg
+║│❍ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
 ║╰──────────────────···✧
 ╰════════════════════
 %readmore`.trimStart(),
-  header: '┏━━ꕥ 〔 *%category* 〕 ꕥ━⬣',
+  header: '┏━━ꕥ 「 *%category* 」 ꕥ━⬣',
   body: '┃ ⎙ %cmd %islimit %isPremium',
   footer: '┗━ꕥ',
   after: `
@@ -238,19 +239,19 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                         "sections": [
                             {
                                 "rows": [{
-                                    "title": "🛠️ Status Bot",
+                                    "title": "☰ ➵͜͡✪ Status Bot",
                                     "description": "Status dan informasi Bot.",
                                     "rowId": ".botstatus"
                                 }, {
-                                    "title": "❗Rules",
+                                    "title": "☰ ➵͜͡✪ Rules",
                                     "description": "Baca rules sebelum menggunakan bot.",
                                     "rowId": ".rules"
                                 }, {
-                                    "title": "👑 Sewa bot - Premium",
+                                    "title": "☰ ➵͜͡✪ Sewa bot - Premium",
                                     "description": "Untuk kamu yang ingin melihat daftar harga sewa dan premium.",
                                     "rowId": ".sewabot"
                                 }, {
-                                    "title": "💌 Group Bot",
+                                    "title": "☰ ➵͜͡✪ Group Bot",
                                     "description": "Official Group FachriBotz.",
                                     "rowId": ".gcbot"
                                 }],
@@ -376,19 +377,19 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                 "title": "⟣────────────❲  Menu FachriBotz  ❳────────────⟢"
                             }, {
                                 "rows": [{
-                                    "title": "👥 Owner bot",
+                                    "title": "☰ ➵͜͡✪ Owner bot",
                                     "description": "Pemilik FachriBotz",
                                     "rowId": ".owner"
                                 }, {
-                                    "title": "💰 Donasi",
+                                    "title": "☰ ➵͜͡✪ Donasi",
                                     "description": "Jangan lupa donasi untuk mendukung bot agar aktif selalu",
                                     "rowId": ".donasi"
                                 }, {
-                                    "title": "🥀 Kata penutup",
+                                    "title": "☰ ➵͜͡✪ Kata penutup",
                                     "description": "Terimakasih untuk user yang telah menggunakan bot, jika ada kesalahan atau permintaan bisa chat ke nomor owner\nNote: chat P/main² tidak akan di respon(user bisa terkena banned/block)",
                                     "rowId": ".creator"
                                 }, {
-                                    "title": " Thanks To",
+                                    "title": "☰ ➵͜͡✪ Thanks To",
                                     "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam bot",
                                     "rowId": ".tqto"
                                 }],
