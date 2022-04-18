@@ -1,5 +1,5 @@
 let fetch = require('node-fetch')
-let handler = async (m, { conn }) => conn.sendButtonLoc(m.chat, await (await fetch(fla + 'Source code')).buffer(), `
+let handler = async (m, { conn }) => await conn.sendButtonLoc(m.chat, await (await fetch(image)).buffer(), `
 ◪ 🖥️ *SCRIPT BOT*
 │ *SC Recode :* 
 │ ╰ *Private*
