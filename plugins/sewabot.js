@@ -13,13 +13,13 @@ let handler = async(m, { conn }) => {
 ║╭──❉ 〔 𝐕𝐈𝐀 𝐓𝐎𝐏𝐔𝐏 〕 ❉──────
 ║│➸ *Dana* : 
 ║│➸ *Gopay*: 
-║│➸ *Owner*: wa.me/6285713041886
+║│✆ *Owner*: wa.me/6285713041886
 ║╰─────────────────────
 ╰═══════════════════════`.trim()
     const button = {
         buttonText: 'List Harga',
         description: kamisato,
-        sections:  [{title: "Silahkan di pilih", rows: [
+        sections:  [{title: "Silahkan di pilih kak", rows: [
         {title: '1 Minggu', description: "Rp5.000\nSewa bot 1 Minggu.", rowId:".masuk"},
         {title: '2 Minggu', description: "Rp10.00\nSewa bot 2 Minggu.", rowId:".masuk"},
         {title: '3 Minggu', description: "Rp15.00\nSewa bot 3 Minggu.", rowId:".masuk"},
