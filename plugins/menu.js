@@ -29,7 +29,7 @@ const defaultMenu = {
 ╰════════════════════
 %readmore`.trimStart(),
   header: '┏━━✧「 *%category* 」✧━━',
-  body: '┃ ⎙ %cmd %islimit %isPremium',
+  body: '┃ 〲⎙ %cmd %islimit %isPremium',
   footer: '┗━···✧',
   after: `
 `,
