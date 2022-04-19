@@ -7,6 +7,7 @@
 // thank you to benni ismael
 // thank you to zerochanBot
 // thank you to LynnXzy
+// thank you to Fachri
 // thank you to MikeBot Dev Team
 // thank you to ALL Bot creator
 // and thanks you to who support my Bot
