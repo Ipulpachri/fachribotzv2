@@ -370,11 +370,11 @@ Hai Kak, %name
 
                     mediaUrl: 'https://youtu.be/c/SaefulFahri',
 
-                    title: 'CREATED BY FACHRI',
+                    title: 'created by Fachri',
 
-                    body: 'FACHRI-BOTZ',
+                    body: 'Fachri-Botz',
 
-                    thumbnail: await(await fetch(image)).buffer()
+                    thumbnail: await(await fetch(thumb)).buffer()
 
                 }
 
