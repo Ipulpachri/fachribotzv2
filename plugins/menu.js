@@ -32,8 +32,6 @@ const defaultMenu = {
   body: '┃ 〲⎙ %cmd %islimit %isPremium',
   footer: '┗━···✧',
   after: `
-*FachriBotz@^4.01*
-```Created By Fachri```
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
