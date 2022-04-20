@@ -270,45 +270,44 @@ let tags = {
     conn.menu = conn.menu ? conn.menu : {}
 
     let before = conn.menu.before || `
-Hai, kak %name
-Saya *Fachri Botz* Whatsapp Bot
+Hai Kak, %name
 
-❏ INFO BOT
-▷ Bot Name : FachriBotz
-▷ Battery : %battery
-▷ Prefix :  _*Multi*_
+❏ *INFO BOT*
 
+➵͜͡✪ Bot Name : FachriBotz
+➵͜͡✪ Battery : %battery
+➵͜͡✪ Prefix :  _*Multi*_
 
-❏ INFO USER
-▷ UserName : %name
-▷ Phone Number : ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
-▷ Registered : ${registered ? 'Yes': 'No'}
+❏ *INFO USER*
 
+➵͜͡✪ UserName : %name
+➵͜͡✪ Phone Number : ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}
+➵͜͡✪ Registered : ${registered ? 'Yes': 'No'}
 
+❏ *HARI & WAKTU*
 
-❏ HARI & WAKTU
-▷ Day : %week
-▷ Date : %date
-▷ Weton : %weton
-▷ Islamic Date : ${dateIslamic}
-▷ Time : %time WIB
+➵͜͡✪ Day : %week
+➵͜͡✪ Date : %date
+➵͜͡✪ Weton : %weton
+➵͜͡✪ Islamic Date : ${dateIslamic}
+➵͜͡✪ Time : %time WIB
 
+❏ *DATA*
 
-❏ DATA
-▷ Uptime : %uptime
-▷ Main Uptime : %muptime
-▷ Users In Database : %totalreg Users
-▷ Registered : %rtotalreg Users
+➵͜͡✪ Uptime : %uptime
+➵͜͡✪ Main Uptime : %muptime
+➵͜͡✪ Users In Database : %totalreg Users
+➵͜͡✪ Registered : %rtotalreg Users
 %readmore
 
 `
-    let header = conn.menu.header || '╭─「 %category 」'
+    let header = conn.menu.header || '┏━━✧「 *%category* 」✧━━'
 
-    let body   = conn.menu.body   || '│ • %cmd%islimit'
+    let body   = conn.menu.body   || '┃ 〲⎙ %cmd %islimit %isPremium'
 
-    let footer = conn.menu.footer || '╰────\n'
+    let footer = conn.menu.footer || '┗━···✧'
 
-    let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `Powered By @${global.conn.user.jid.split`@`[0]}`) + `\n*%npmname@^%version*\n\`\`\`\%npmdesc\`\`\``
+    let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `Powered By @${global.conn.user.jid.split`@`[0]}`) + `\n*FachriBotz@^4.01*\n\`\`\`\%npmdesc\`\`\``
 
     let _text  = before + '\n'
 
