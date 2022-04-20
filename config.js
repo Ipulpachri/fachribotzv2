@@ -14,7 +14,7 @@
 let fs = require('fs')
 let chalk = require('chalk')
 
-global.linkGC = ['https://chat.whatsapp.com/EVCGfzxLWfp81n0WhmVklH', 'https://chat.whatsapp.com/FnNAbem8o6r4pgLhSdO8Q9', 'https://chat.whatsapp.com/HBhy7rVae3o0PkIfkhvs2N'] // ganti jadi group lu
+global.linkGC = ['https://chat.whatsapp.com/', 'https://chat.whatsapp.com/', 'https://chat.whatsapp.com/'] // ganti jadi group lu
 global.owner = ['6285713041886', '6285713041886', '6285713041886'] // Masukan nomot kalian
 global.mods = ['6285713041886', '6285713041886'] // Moderator
 global.prems = JSON.parse(fs.readFileSync('./src/premium.json')) // Pengguna premium tidak memerlukan limit
@@ -83,6 +83,7 @@ global.fla = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=tr
 global.watermark = '© ᴹᴿ᭄ Fachri botz ×፝֟͜×' //change the watermark (beberapa harus manual)
 
 // Ubah saja
+global.thumb = 'https://i.ibb.co/TmfBSQq/IMG-20220418-WA0037.jpg'
 global.image = 'https://i.ibb.co/y6TRVt4/virgam.png'//thumbnail
 global.bank = 'https://telegra.ph/file/d5ddf4cc627bb0e6bc420.jpg'
 global.kandang = 'https://telegra.ph/file/67a6ee607d03a4e52757d.jpg'
