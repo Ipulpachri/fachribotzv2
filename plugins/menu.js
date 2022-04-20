@@ -400,8 +400,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                         ], "contextInfo": 
 						{ "stanzaId": m.key.id,
                         "participant": "0@s.whatsapp.net",
-                        "remoteJid": "120363039883247297@g.us",
-                        "quotedMessage": m.message
+                        "remoteJid": "status@broadcast",
+                        "quotedMessage": "created by Fachri",
 						}
                     }
                  }, {}), {waitForAck: true})
