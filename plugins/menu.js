@@ -32,6 +32,8 @@ const defaultMenu = {
   body: '┃ 〲⎙ %cmd %islimit %isPremium',
   footer: '┗━···✧',
   after: `
+*FachriBotz@^4.01*
+```Created By Fachri```
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
@@ -401,7 +403,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 						{ "stanzaId": m.key.id,
                         "participant": "0@s.whatsapp.net",
                         "remoteJid": "status@broadcast",
-                        "quotedMessage": "created by Fachri",
+                        "quotedMessage": m.message
 						}
                     }
                  }, {}), {waitForAck: true})
