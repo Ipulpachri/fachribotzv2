@@ -231,7 +231,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 ┃✾ _*${Object.entries(global.db.data.users).filter(user => user[1].banned).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖 𝙏𝙚𝙧𝙗𝙖𝙣𝙣𝙚𝙙
 ┃⎙ Note : Bot delay, Jangan spam !!
 ┗━━━━━━━━⬣`.trim(),
-                        "footerText": "© 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 Fachri",
+                        "footerText": "© 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 Fachri/n▌│█║▌║▌║║▌║▌║█│▌",
                         "buttonText": "Klik Disini",
                         "listType": "SINGLE_SELECT",
                         "sections": [
@@ -257,7 +257,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "description": "Official Group FachriBotz.",
                                     "rowId": ".gcbot"
                                 }],
-                                "title": "⟣─────────❲ Tentang Bot dan lainnya ❳──────────⟢"
+                                "title": "⟣─────────「 Tentang Bot dan lainnya 」──────────⟢"
                             }, {
                                 "rows": [{
                                     "title": `⎙ Semua Perintah`,
@@ -376,7 +376,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "description": "Menu Khusus Owner",
                                     "rowId": "#? owner"
                                 }],
-                                "title": "⟣────────────❲  Menu FachriBotz  ❳────────────⟢"
+                                "title": "⟣────────────「  Menu FachriBotz  ❳───────────⟢"
                             }, {
                                 "rows": [{
                                     "title": "☰ ➵͜͡✪ Owner bot",
@@ -395,7 +395,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                     "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam bot",
                                     "rowId": ".tqto"
                                 }],
-                                "title": "⟣──────────────❲ Penutup ❳───────────────⟢"
+                                "title": "⟣─────────────「 Kata Penutup 」─────────────⟢"
                             }
                         ], "contextInfo": 
 						{ "stanzaId": m.key.id,
@@ -456,8 +456,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                .replace(/%islimit/g, menu.limit ? 'Limit' : '')
-                .replace(/%isPremium/g, menu.premium ? 'Premium' : '')
+                .replace(/%islimit/g, menu.limit ? '*Limit*' : '')
+                .replace(/%isPremium/g, menu.premium ? '*Premium*' : '')
                 .trim()
             }).join('\n')
           }),
