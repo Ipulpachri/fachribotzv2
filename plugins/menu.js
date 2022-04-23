@@ -31,7 +31,8 @@ const defaultMenu = {
   header: '┏━━✧「 *%category* 」✧━━',
   body: '┃ 〲⎙ %cmd %islimit %isPremium',
   footer: '┗━···✧',
-  after: `
+  after: `⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕.
+     FachriBotz
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
