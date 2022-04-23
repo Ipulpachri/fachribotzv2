@@ -1,3 +1,6 @@
+//base: kanna
+//recode: fachri
+
 let levelling = require('../lib/levelling')
 let { MessageType } = require('@adiwajshing/baileys')
 let fs = require('fs')
@@ -392,19 +395,19 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                   "description": "Vote & Absen",
                   "rowId": ".? vote"
                 }, {
-                  "title": "Menu 27 |🤖|",
+                  "title": "Menu 26 |🤖|",
                   "description": "Jadibot",
                   "rowId": ".? jadibot"
                 }, {
-                  "title": "Menu 28 |ℹ️|",
+                  "title": "Menu 27 |ℹ️|",
                   "description": "Info",
                   "rowId": ".? info"
                 }, {
-                  "title": "Menu 29 |❓|",
+                  "title": "Menu 28 |❓|",
                   "description": "No Category",
                   "rowId": ".? tanpakategori"
                 }, {
-                  "title": "Menu 30 | 🧑‍💻|",
+                  "title": "Menu 39 | 🧑‍💻|",
                   "description": "Owner",
                   "rowId": ".? owner"
                 }],
