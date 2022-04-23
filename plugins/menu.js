@@ -4,45 +4,54 @@ let fs = require('fs')
 let path = require('path')
 let fetch = require('node-fetch')
 let moment = require('moment-timezone')
+let { performance } = require('perf_hooks')
+let neww = Math.round(performance.now())
+let old = Math.round(performance.now())
 const chats = conn.chats.all()
 const groups = chats.filter(v => v.jid.endsWith('g.us'))
 const defaultMenu = {
   before: `
-╭══════════════════
-║╭──✧「 *INFO USER* 」✧──
-║│➵͜͡✪ Tersisa *%limit Limit*
-║│➵͜͡✪ Age : *%age*
-║│➵͜͡✪ Premium: *%prems*
-║│➵͜͡✪ Limit : *%limit*
-║│➵͜͡✪ Money : *%money*
-║│➵͜͡✪ Role : *%role*
-║│➵͜͡✪ Level : 
-║│➵͜͡✪ *%level (%exp / %maxexp)* [%xp4levelup]
-║│➵͜͡✪ %totalexp XP secara Total
-║╰────────────────···✧
-╰══════════════════
-╭══════════════════
-║╭──✧「 *TODAY&INFO* 」✧───
-║│➵͜͡✪ Tanggal : *%week %weton, %date*
-║│➵͜͡✪ Tanggal Islam : *%dateIslamic*
-║│➵͜͡✪ Waktu : *%time*
-║│➵͜͡✪ Uptime : *%uptime (%muptime)*
-║│➵͜͡✪ Speed : *${neww - old} ms*
-║│➵͜͡✪ Battery : *${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}*
-║│➵͜͡✪ Mode : *${global.opts['self'] ? 'Private' : 'Publik'}*
-║│➵͜͡✪ Database : *%rtotalreg dari %totalreg*
-║│➵͜͡✪ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
-║╰──────────────────···✧
-╰════════════════════
+╭─────═[ *INFO USER* ]═─────⋆
+│╭───────────────···
+┴│▸ *Name:* %name
+⬡│▸ *Premium:* %prems
+⬡│▸ *Age:* %age
+⬡│▸ *Limit:* %limit
+⬡│▸ *Money:* %money
+⬡│▸ *Role:* %role
+⬡│▸ *Level:* %level [%xp4levelup]
+⬡│▸ *Xp:* %exp / %maxexp
+┬│▸ *Total Xp:* %totalexp
+│╰────────────────···
+┠─────═[ *TODAY* ]═─────⋆
+│╭────────────────···
+┴│    *${ucapan()} %name!*
+⬡│▸ *Tanggal:* %week %weton, %date
+⬡│▸ *Tanggal Islam:* %dateIslamic
+┬│▸ *Waktu:* %time
+│╰────────────────···
+┠─────═[ *BOT INFO* ]═─────⋆
+│╭────────────────···
+┴│▸ *Nama Bot:* %me
+⬡│▸ *Mode:* ${global.opts['self'] ? 'Private' : 'Publik'}
+⬡│▸ *Prefix:* [ ! ]
+⬡│▸ *Speed:* ${neww - old} ms
+⬡│▸ *Battery:* ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
+⬡│▸ *Platform:* Unbuntu linux
+⬡│▸ *Uptime:* %uptime (%muptime)
+┬│▸ *Database:* %rtotalreg dari %totalreg
+│╰────────────────···
+╰──────────═┅═──────────
 %readmore`.trimStart(),
-  header: '┏━━✧「 *%category* 」✧━━',
-  body: '┃ 〲⎙⪼ %cmd %islimit %isPremium',
-  footer: '┗━···✧',
+  header: '╭═[ *%category* ]═────···\n┴',
+  body: '│◌ ⃝✧⪼ %cmd %islimit %isPremium',
+  footer: '┬\n╰───────────···',
   after: `⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕.
-     FachriBotz
+     %me
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
+	let bzz = './audio/robot.m4a'
 	let { anon, anticall, antispam, antitroli, backup, jadibot, groupOnly, nsfw } = global.db.data.settings[conn.user.jid]
     let totaljadibot = [...new Set([...global.conns.filter(conn => conn.user && conn.state !== 'close').map(conn => conn.user)])]
 
@@ -50,38 +59,41 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     let uptime = clockString(_uptime)
   let tags
   let teks = `${args[0]}`.toLowerCase()
-  let arrayMenu = ['all', 'game', 'edukasi', 'news', 'nsfw', 'xp', 'stiker', 'image', 'anime', 'kerangajaib', 'quotes', 'admin', 'rpg', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'vote', 'tanpakategori', 'owner']
+  let arrayMenu = ['all', 'game', 'edukasi', 'news', 'nsfw', 'xp', 'stiker', 'image', 'anime', 'kerangajaib', 'quotes', 'admin', 'rpg', 'grup', 'premium', 'internet', 'anonymous', 'nulis', 'downloader', 'tools', 'fun', 'database', 'quran', 'audio', 'jadibot', 'info', 'vote', 'tanpakategori', 'owner', 'gift', 'thnks']
   if (!arrayMenu.includes(teks)) teks = '404'
   if (teks == 'all') tags = {
     'main': 'Utama',
     'game': 'Game',
+    'rpg': 'Epic Rpg',
     'xp': 'Exp & Limit',
-    'nsfw': `NSFW ${global.opts['nsfw'] ? '' : '(Dinonaktifkan)'}`,
-    'sticker': 'Stiker',
-    'edukasi': 'Edukasi',
-    'news': 'News',
+    'fun': 'Fun',
+    'jodoh': 'Jodoh',
+    'gift': 'Gift',
+    'anime': 'Anime',
+    'hentai': `NSFW`,
+    'premium': 'Premium',
+    'anonymous': 'Anonymous Chat',
     'kerang': 'Kerang Ajaib',
     'quotes': 'Quotes',
-    'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`,
-    'rpg': 'Epic Rpg',
+    'absen': 'Absen',
+    'voting': 'vote',
+    'admin': `Admin`,
     'group': 'Grup',
-    'anime': 'Anime',
-    'premium': 'Premium',
+    'news': 'News',
     'internet': 'Internet',
+    'edukasi': 'Edukasi',
+    'quran': 'Islam',
     'image': 'Random Image',
-    'anonymous': 'Anonymous Chat',
+    'sticker': 'Stiker',
     'nulis': 'MagerNulis & Logo',
+    'audio': 'Pengubah Suara',
     'downloader': 'Downloader',
     'tools': 'Tools',
-    'fun': 'Fun',
     'database': 'Database',
-    'vote': 'Voting',
-    'absen': 'Absen',
-    'quran': 'Islam',
-    'audio': 'Pengubah Suara',
     'jadibot': 'Jadi Bot',
     'info': 'Info',
     '': 'Tanpa Kategori',
+    'thnks': 'THANKS TO',
   }
   if (teks == 'game') tags = {
     'game': 'Game'
@@ -96,8 +108,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     'edukasi': 'Edukasi'
   }
   if (teks == 'nsfw') tags = {
-    'hentai': 'Hentai',
-    'bokep': 'Bokep'
+    'hentai': 'NSFW',
+    'nsfw': 'HENTAI',
   }
   if (teks == 'stiker') tags = {
     'sticker': 'Stiker'
@@ -139,7 +151,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     'tools': 'Tools'
   }
   if (teks == 'fun') tags = {
-    'fun': 'Fun'
+    'fun': 'Fun',
+    'jodoh': 'Jodoh'
+  }
+  if (teks == 'jodoh') tags = {
+    'jodoh': 'Jodoh'
   }
   if (teks == 'database') tags = {
     'database': 'Database'
@@ -154,6 +170,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'quran') tags = {
     'quran': 'Islam'
   }
+  if (teks == 'gift') tags = {
+    'gift': 'Gift'
+  }
   if (teks == 'audio') tags = {
     'audio': 'Pengubah Suara'
   }
@@ -166,6 +185,9 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
   if (teks == 'tanpakategori') tags = {
     '': 'Tanpa Kategori'
   }
+  if (teks == 'thnks') tags = {
+    'thnks': 'THANKS TO'
+  }
   if (teks == 'owner') tags = {
     'owner': 'Owner',
     'host': 'Host',
@@ -176,7 +198,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
-    let { exp, limit, level, role, registered } = global.db.data.users[m.sender]
+    let { money, age, exp, limit, level, role, registered } = global.db.data.users[m.sender]
+    let premium = global.db.data.users[m.sender].premium
+    let prems = `${premium ? 'Yes': 'No'}`
+    let wm = global.botwm
+    let logo = global.logo
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
     let name = registered ? global.db.data.users[m.sender].name : conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
@@ -226,25 +252,25 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       }
     })
     if (teks == '404') {
-			return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
+      return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
         "listMessage": {
           "title": `✧────────···[ Dashboard ]···─────────✧`.trim(),
-          "description": `${ucapan()}, ${name}`.trim(),
+          "description": `${ucapan()}, ${name} !`.trim(),
           "footerText": `╭━━━━━━━━━━━━━━━━┈─✧
 ┴
-│➵͜͡✪ Aktif selama ${uptime}
-│➵͜͡✪ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
-│➵͜͡✪ Prefix : [#]
-│➵͜͡✪ *${Object.keys(global.db.data.users).length}* Pengguna
-│➵͜͡✪ *${totaljadibot.length}* Jadibot
-│➵͜͡✪ *${conn.blocklist.length}* Terblock
-│➵͜͡✪ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
-│➵͜͡✪ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
+│⬡ Aktif selama ${uptime}
+│⬡ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
+│⬡ Prefix : [#]
+│⬡ *${Object.keys(global.db.data.users).length}* Pengguna
+│⬡ *${totaljadibot.length}* Jadibot
+│⬡ *${conn.blocklist.length}* Terblock
+│⬡ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
+│⬡ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
 ┬
 ├━━━━━━━━━━━━━━━━┈─⋆
-┴ ▸ Owner : *Fachri*
+┴ ▸ *Owner :* Fachri
 ✧
-┬ 📌 Note :
+┬ 📌 𝗣𝗶𝗻𝗻𝗲𝗱 :
 │ Tolong jangan dispam ya biar ga delay
 ╰━━━━━━━━━━━━━━━━┈─◂
      ▌│█║▌║▌║║▌║▌║█│▌
@@ -252,168 +278,156 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
      ${week}, ${date}`,
           "buttonText": "Click Here!",
           "listType": "SINGLE_SELECT",
-                        "sections": [
+          "sections": [
                             {
                                 "rows": [{
-                                    "title": "☰ ➵͜͡✪ Status Bot",
-                                    "description": "Status dan informasi Bot.",
-                                    "rowId": ".botstatus"
+                                         "title": "[📊] Status Bot",
+                                         "description": "Status Fachri Bot",
+                                         "rowId": ".botstat"
+                                    }, {
+                                         "title": "[⚡] Speed",
+                                         "description": "Menampilkann Kecepatan Respon Bot",
+                                         "rowId": ".ping"
+                                    }, {
+                                         "title": "[🗒️] Info",
+                                         "description": "Menampilkan Info Bot",
+                                         "rowId": ".infobot"
+                                    }, {
+                                         "title": "[🎐] Creator",
+                                         "description": "Kontak Creator ku ><",
+                                         "rowId": ".owner"
+                       }],
+                    "title": "✧─────────────[ Tentang Bot Dan Lainnya ]─────────────✧"
+                }, {
+                  "rows": [{
+                  "title": "Menu 01 |🧾|",
+                  "description": "All Commands",
+                  "rowId": ".? all"
+                }, {
+                  "title": "Menu 02 |🎮|",
+                  "description": "Game",
+                  "rowId": ".? game"
+                }, {
+                  "title": "Menu 03 |🌱|",
+                  "description": "RPG",
+                  "rowId": ".? rpg"
+                }, {
+                  "title": "Menu 04 |✨|",
+                  "description": "Exp & limit",
+                  "rowId": ".? xp"
+                }, {
+                  "title": "Menu 05 |🧩|",
+                  "description": "Fun",
+                  "rowId": ".? fun"
+                }, {
+                  "title": "Menu 07 |🔞|",
+                  "description": "Nsfw",
+                  "rowId": ".? nsfw"
+                }, {
+                  "title": "Menu 08 |⛩️|",
+                  "description": "Anime",
+                  "rowId": ".? anime"
+                }, {
+                  "title": "Menu 09 |📰|",
+                  "description": "News",
+                  "rowId": ".? News"
+                },  {
+                  "title": "Menu 10 |🕋|",
+                  "description": "Islami",
+                  "rowId": ".? quran"
+                }, {
+                  "title": "Menu 11 |🏫|",
+                  "description": "Edukasi",
+                  "rowId": ".? edukasi"
+                }, {
+                  "title": "Menu 12 |🖼️|",
+                  "description": "Radom Image",
+                  "rowId": ".? image"
+                },  {
+                  "title": "Menu 13 |🎫|",
+                  "description": "Sticker",
+                  "rowId": ".? stiker"
+                }, {
+                  "title": "Menu 14 |🐚|",
+                  "description": "Kerang ajaib",
+                  "rowId": ".? kerangajaib"
+                }, {
+                  "title": "Menu 15 |📑|",
+                  "description": "Quotes",
+                  "rowId": ".? quotes"
+                }, {
+                  "title": "Menu 16 |👑|",
+                  "description": "Admin Group",
+                  "rowId": ".? admin"
+                }, {
+                  "title": "Menu 17 |👥|",
+                  "description": "Group Chat",
+                  "rowId": ".? grup"
+                }, {
+                  "title": "Menu 18 |🌟|",
+                  "description": "Premium Users",
+                  "rowId": ".? premium"
+                }, {
+                  "title": "Menu 19 |💻|",
+                  "description": "Internet",
+                  "rowId": ".? internet"
+                }, {
+                  "title": "Menu 21 |✍️|",
+                  "description": "Menulis & Membuat Logo",
+                  "rowId": ".? nulis"
+                }, {
+                  "title": "Menu 22 |📥|",
+                  "description": "Downloader",
+                  "rowId": ".? downloader"
+                }, {
+                  "title": "Menu 23 |🧰|",
+                  "description": "Tools",
+                  "rowId": ".? tools"
+                }, {
+                  "title": "Menu 24 |📂|",
+                  "description": "Database",
+                  "rowId": ".? database"
+                }, {
+                  "title": "Menu 25 |🗳️|",
+                  "description": "Vote & Absen",
+                  "rowId": ".? vote"
+                }, {
+                  "title": "Menu 27 |🤖|",
+                  "description": "Jadibot",
+                  "rowId": ".? jadibot"
+                }, {
+                  "title": "Menu 28 |ℹ️|",
+                  "description": "Info",
+                  "rowId": ".? info"
+                }, {
+                  "title": "Menu 29 |❓|",
+                  "description": "No Category",
+                  "rowId": ".? tanpakategori"
+                }, {
+                  "title": "Menu 30 | 🧑‍💻|",
+                  "description": "Owner",
+                  "rowId": ".? owner"
+                }],
+                                "title": "✧──────────────[ All Menu ]──────────────✧"
                                 }, {
-                                    "title": "☰ ➵͜͡✪ Rules",
-                                    "description": "Baca rules sebelum menggunakan bot.",
-                                    "rowId": ".rules"
-                                }, {
-                                    "title": "☰ ➵͜͡✪ Sewa bot - Premium",
-                                    "description": "Untuk kamu yang ingin melihat daftar harga sewa dan premium.",
-                                    "rowId": ".sewabot"
-                                }, {
-                                    "title": "☰ ➵͜͡✪ Runtime Bot",
-                                    "description": "Bot Aktif Selama...",
-                                    "rowId": ".runtime"
-                                }, {
-                                    "title": "☰ ➵͜͡✪ Group Bot",
-                                    "description": "Official Group FachriBotz.",
-                                    "rowId": ".gcbot"
-                                }],
-                                "title": "⟣─────────「 Tentang Bot dan lainnya 」──────────⟢"
-                            }, {
                                 "rows": [{
-                                    "title": `〲⎙ Semua Perintah`,
-                                    "description": "Memberikan Semua Fitur Bot",
-                                    "rowId": "#? all"
-                                }, { 
-                                    "title": "〲⎙ Islam",
-                                    "description": "Menu Tentang Islam",
-                                    "rowId": "#? quran"
-                                }, { 
-                                    "title": "〲⎙ Edukasi",
-                                    "description": "Menu Edukasi",
-                                    "rowId": "#? edukasi"
-                                }, { 
-                                    "title": "〲⎙ News",
-                                    "description": "Menu Berita",
-                                    "rowId": "#? News"
-                                }, { 
-                                    "title": "〲⎙ Game",
-                                    "description": "Menu Game",
-                                    "rowId": "#? game"
-                                }, { 
-                                    "title": "〲⎙ Epic Rpg",
-                                    "description": "Menu Game RPG",
-                                    "rowId": "#? rpg"
-                                }, { 
-                                    "title": "〲⎙ XP",
-                                    "description": "XP Dan Level",
-                                    "rowId": "#? xp"
-                                }, { 
-                                    "title": "〲⎙ NSFW",
-                                    "description": "Jangan Di Pencet, Tobat banh:V",
-                                    "rowId": "#? nsfw"
-                                }, { 
-                                    "title": "〲⎙ Random Image",
-                                    "description": "Menu Foto Random",
-                                    "rowId": "#? image"
-                                }, { 
-                                    "title": "〲⎙ Stiker",
-                                    "description": "Menu Buat Stiker",
-                                    "rowId": "#? stiker"
-                                }, { 
-                                    "title": "〲⎙ Kerang Ajaib",
-                                    "description": "Menurut Kerang ajaib....",
-                                    "rowId": "#? kerangajaib"
-                                }, { 
-                                    "title": "〲⎙ Quotes",
-                                    "description": "Menu Quotes",
-                                    "rowId": "#? quotes"
-                                }, { 
-                                    "title": "〲⎙ Admin",
-                                    "description": "/menu Admin Group",
-                                    "rowId": "#? admin"
-                                }, { 
-                                    "title": "〲⎙ Grup",
-                                    "description": "Menu Group",
-                                    "rowId": "#? grup"
-                                }, { 
-                                    "title": "〲⎙ Premium",
-                                    "description": "Menu Untuk Premium",
-                                    "rowId": "#? premium"
-                                }, { 
-                                    "title": "〲⎙ Internet",
-                                    "description": "Cari Sesuatu Di Bot",
-                                    "rowId": "#? internet"
-                                }, { 
-                                    "title": "〲⎙ Anonymous",
-                                    "description": "Mainkan Anonymous Chat",
-                                    "rowId": "#? anonymous"
-                                }, { 
-                                    "title": "〲⎙ Nulis & Logo",
-                                    "description": "Menu Nulis & Logo",
-                                    "rowId": "#? nulis"
-                                }, { 
-                                    "title": "〲⎙ Downloader",
-                                    "description": "Download Sesuatu Di Bot",
-                                    "rowId": "#? downloader"
-                                }, { 
-                                    "title": "〲⎙ Tools",
-                                    "description": "Tools Yang Bisa di Gunakan Di Bot",
-                                    "rowId": "#? tools"
-                                }, { 
-                                    "title": "〲⎙ Fun",
-                                    "description": "Menu Ceria",
-                                    "rowId": "#? fun"
-                                }, { 
-                                    "title": "〲⎙ Database",
-                                    "description": "Simpan Sesuatu Di Bot",
-                                    "rowId": "#? database"
-                                }, { 
-                                    "title": "〲⎙ Vote & Absen",
-                                    "description": "Menu Vote & Absen",
-                                    "rowId": "#? vote"
-                                }, { 
-                                    "title": "〲⎙ Pengubah Suara",
-                                    "description": "Ubah Suaramu",
-                                    "rowId": "#? audio"
-                                }, { 
-                                    "title": "〲⎙ Multi Sessions",
-                                    "description": "Salah satunya menu jadibot",
-                                    "rowId": "/menu jadibot"
-                                }, { 
-                                    "title": "〲⎙ Anime",
-                                    "description": "Cari Anime Di Bot",
-                                    "rowId": "#? anime"
-                                }, { 
-                                    "title": "〲⎙ Info",
-                                    "description": "Info Tentang Bot",
-                                    "rowId": "#? info"
-                                }, { 
-                                    "title": "Tanpa Kategori",
-                                    "description": "",
-                                    "rowId": "#? tanpakategori"
-                                }, { 
-                                    "title": "〲⎙ Owner",
-                                    "description": "Menu Khusus Owner",
-                                    "rowId": "#? owner"
+                                "title": "[🗳️] Donasi",
+                                "description": "Donasi kak, jangan enak pakenya doang",
+                                "rowId": ".donasi"
+                                }, {
+                                "title": "[🔖] Sewa",
+                                "description": "Menampilkan List harga sewabot",
+                                "rowId": ".sewa"
+                                }, {
+                                "title": "[🔬] Script",
+                                "description": "Script Bot",
+                                "rowId": ".sc"
+                                }, {
+                                "title": "[🎖️] Thanks To",
+                                "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam bot",
+                                "rowId": ".? thnks"
                                 }],
-                                "title": "⟣────────────「  Menu FachriBotz  ❳───────────⟢"
-                            }, {
-                                "rows": [{
-                                    "title": "☰ ➵͜͡✪ Owner bot",
-                                    "description": "Pemilik FachriBotz",
-                                    "rowId": ".owner"
-                                }, {
-                                    "title": "☰ ➵͜͡✪ Donasi",
-                                    "description": "Jangan lupa donasi untuk mendukung bot agar aktif selalu",
-                                    "rowId": ".donasi"
-                                }, {
-                                    "title": "☰ ➵͜͡✪ Kata penutup",
-                                    "description": "Terimakasih untuk user yang telah menggunakan bot, jika ada kesalahan atau permintaan bisa chat ke nomor owner\nNote: chat P/main² tidak akan di respon(user bisa terkena banned/block)",
-                                    "rowId": ".creator"
-                                }, {
-                                    "title": "☰ ➵͜͡✪ Thanks To",
-                                    "description": "Terima kasih banyak untuk user yang telah berpartisipasi dalam bot",
-                                    "rowId": ".tqto"
-                                }],
-                                "title": "⟣─────────────「 Kata Penutup 」─────────────⟢"
+                                "title": "✧───────────────[ Info Bot ]───────────────✧"
                             }
                         ], "contextInfo": 
                          { "stanzaId": m.key.id,
@@ -422,6 +436,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                         }
                     }
                  }, {}), {waitForAck: true})
+  
     }
     // gunakan ini jika kamu menggunakan whatsapp bisnis
     //   throw `
@@ -473,8 +488,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                .replace(/%islimit/g, menu.limit ? '*Limit*' : '')
-                .replace(/%isPremium/g, menu.premium ? '*Premium*' : '')
+                .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
+                .replace(/%isPremium/g, menu.premium ? '(Premium)' : '')
                 .trim()
             }).join('\n')
           }),
@@ -496,18 +511,18 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       totalexp: exp,
       xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
-      level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+      money, age, prems, level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    // await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'watermark', 'Owner', '.owner', 'Donasi', '.donasi', 'Rules', '.infobot', m)
+    // await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'Fachri вσтz', 'Owner', '.owner', 'Donasi', '.donasi', 'Rules', '.infobot', m)
     await conn.send3ButtonLoc(m.chat, logo, '──────────[ *DASHBOARD* ]──────────', text.trim(), 'Owner', '.nowner', 'Donasi', '.donasi', 'Rules', '.rules', m)
     let nama = await conn.getName(m.sender)
     let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
 
 
   logo2 = global.logo
-  kanna = fs.readFileSync('./src/RadBotZ.jpg')
+  kanna = fs.readFileSync('./src/RadbotZ.jpg')
   kannaImg = (await conn.prepareMessage('0@s.whatsapp.net', kanna, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
   sumberImg = await (await fetch(fla + teks + ' menu')).buffer()
   image = (await conn.prepareMessage('0@s.whatsapp.net', logo2, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
@@ -518,7 +533,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
         "productId": "4938174216214248",
         "title": '✧───────···[ Menu ]···────────✧',
         "description": `\n${wm}\n` + text,
-        "retailerId": `${week}, ${date}  |  By Fachri`,
+        "retailerId": `${week}, ${date}  |  ʙʏ ʟᴇᴛᴛᴀ-sᴀᴍᴀ ‷♪`,
         "url": '\n',
         "descriptionCount": "999999999",
         "productImageCount": "1",
@@ -537,16 +552,26 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     throw e
   }
 }
-handler.help = ['menu', 'help']
+handler.help = ['menu', '?', 'help']
 handler.tags = ['main']
-handler.command = /^(\?|menu|help)$/i
-
+handler.command = /^(menu|\?|help)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
 handler.register = true
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
+handler.exp = 3
 
 module.exports = handler
 
-const more = String.fromCharCode(1)
-const readMore = more.repeat(1)
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4201)
 
 function clockString(ms) {
   let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
@@ -556,18 +581,18 @@ function clockString(ms) {
 }
 function ucapan() {
   const time = moment.tz('Asia/Jakarta').format('HH')
-  res = "Selamat dinihari🌃"
+  res = "Selamat dinihari"
   if (time >= 4) {
-    res = "Selamat pagi kak🌄"
+    res = "Selamat pagi 🌄"
   }
   if (time > 10) {
-    res = "Selamat siang kak🌄"
+    res = "Selamat siang ☀️"
   }
   if (time >= 15) {
-    res = "Selamat sore kak🌇"
+    res = "Selamat sore 🌇"
   }
   if (time >= 18) {
-    res = "Selamat malam kak🌉"
+    res = "Selamat malam 🌙"
   }
   return res
 }
