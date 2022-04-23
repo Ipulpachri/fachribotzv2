@@ -15,7 +15,7 @@ handler.all = async function (m) {
 Hai kak, ${ucapan()}
 
 ${user.banned ? 'kamu dibanned' : `Saya adalah *FachriBotz*, salah satu Bot Whatsapp. harap tidak spam/telpon/minta save ke nomor ini. Ada yang bisa saya bantu?`}
-`.trim(), jika button ga keliatan, Ketik #menu, user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? ',owner' : '.menu', 'Panduan penggunaan', '.tutorbot', 'Verify', '.daftar undefined.15', m)
+`.trim(), Created By Fachri, user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? ',owner' : '.menu', 'Panduan penggunaan', '.tutorbot', 'Verify', '.daftar undefined.15', m)
     user.pc = new Date * 1
 }
 
