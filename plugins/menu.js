@@ -230,8 +230,11 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 ┃✾ _*${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}*_ 𝘾𝙝𝙖𝙩 𝙩𝙚𝙧𝙗𝙖𝙣𝙣𝙚𝙙
 ┃✾ _*${Object.entries(global.db.data.users).filter(user => user[1].banned).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖 𝙏𝙚𝙧𝙗𝙖𝙣𝙣𝙚𝙙
 ┃⎙ Note : Bot delay, Jangan spam !!
+┃
+┃ ⬣━ Powered By Fachri ━⬣
+┃   ▌│█║▌║▌║║▌║▌║█│▌
 ┗━━━━━━━━⬣`.trim(),
-                        "footerText": "© 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 Fachri/n▌│█║▌║▌║║▌║▌║█│▌",
+                        "footerText": "© 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 Fachri",
                         "buttonText": "Klik Disini",
                         "listType": "SINGLE_SELECT",
                         "sections": [
