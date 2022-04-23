@@ -11,25 +11,32 @@ const defaultMenu = {
 ╭══════════════════
 ║╭──✧「 *INFO USER* 」✧──
 ║│➵͜͡✪ Tersisa *%limit Limit*
-║│➵͜͡✪ Role: *%role*
-║│➵͜͡✪ Level: 
+║│➵͜͡✪ Age : *%age*
+║│➵͜͡✪ Premium: *%prems*
+║│➵͜͡✪ Limit : *%limit*
+║│➵͜͡✪ Money : *%money*
+║│➵͜͡✪ Role : *%role*
+║│➵͜͡✪ Level : 
 ║│➵͜͡✪ *%level (%exp / %maxexp)* [%xp4levelup]
 ║│➵͜͡✪ %totalexp XP secara Total
 ║╰────────────────···✧
 ╰══════════════════
 ╭══════════════════
 ║╭──✧「 *TODAY&INFO* 」✧───
-║│➵͜͡✪ Tanggal: *%week %weton, %date*
-║│➵͜͡✪ Tanggal Islam: *%dateIslamic*
-║│➵͜͡✪ Waktu: *%time*
-║│➵͜͡✪ Uptime: *%uptime (%muptime)*
-║│➵͜͡✪ Database: %rtotalreg dari %totalreg
+║│➵͜͡✪ Tanggal : *%week %weton, %date*
+║│➵͜͡✪ Tanggal Islam : *%dateIslamic*
+║│➵͜͡✪ Waktu : *%time*
+║│➵͜͡✪ Uptime : *%uptime (%muptime)*
+║│➵͜͡✪ Speed : *${neww - old} ms*
+║│➵͜͡✪ Battery : *${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}*
+║│➵͜͡✪ Mode : *${global.opts['self'] ? 'Private' : 'Publik'}*
+║│➵͜͡✪ Database : *%rtotalreg dari %totalreg*
 ║│➵͜͡✪ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
 ║╰──────────────────···✧
 ╰════════════════════
 %readmore`.trimStart(),
   header: '┏━━✧「 *%category* 」✧━━',
-  body: '┃ 〲⎙ %cmd %islimit %isPremium',
+  body: '┃ 〲⎙⪼ %cmd %islimit %isPremium',
   footer: '┗━···✧',
   after: `⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕.
      FachriBotz
@@ -220,26 +227,31 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     })
     if (teks == '404') {
 			return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
-                    "listMessage":  {
-                        "title": `*${ucapan()}, ${name}*`.trim(),
-                        "description": `┏━━ 「 *FachriBotz* 」 ━⬣
-┃➵͜͡✪ 𝘼𝙠𝙩𝙞𝙛 𝙎𝙚𝙡𝙖𝙢𝙖 _*${uptime}*_
-┃➵͜͡✪ 𝘽𝙖𝙩𝙚𝙧𝙖𝙞 _*${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}*_
-┃➵͜͡✪ _*${Object.keys(global.db.data.users).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖
-┃➵͜͡✪ _*${totaljadibot.length}*_ 𝙅𝙖𝙙𝙞𝙗𝙤𝙩
-┃➵͜͡✪ _*${conn.blocklist.length}*_ 𝙏𝙚𝙧𝙗𝙡𝙤𝙘𝙠
-┃➵͜͡✪ _*${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}*_ 𝘾𝙝𝙖𝙩 𝙩𝙚𝙧𝙗𝙖𝙣𝙣𝙚𝙙
-┃➵͜͡✪ _*${Object.entries(global.db.data.users).filter(user => user[1].banned).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖 𝙏𝙚𝙧𝙗𝙖𝙣𝙣𝙚𝙙
-┃〲⎙ Note : Bot delay, Jangan spam !!
-┃
-┃ ⬣━ 𝖢𝗋𝖾𝖺𝗍𝖾 𝖡𝗒 Fachri ━⬣
-┃
-┃   ▌│█║▌║▌║║▌║▌║█│▌
-┃
-┗━━━━━━━━⬣`.trim(),
-                        "footerText": "Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada owner.",
-                        "buttonText": "Klik Disini",
-                        "listType": "SINGLE_SELECT",
+        "listMessage": {
+          "title": `✧────────···[ Dashboard ]···─────────✧`.trim(),
+          "description": `${ucapan()}, ${name}`.trim(),
+          "footerText": `╭━━━━━━━━━━━━━━━━┈─✧
+┴
+│➵͜͡✪ Aktif selama ${uptime}
+│➵͜͡✪ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
+│➵͜͡✪ Prefix : [#]
+│➵͜͡✪ *${Object.keys(global.db.data.users).length}* Pengguna
+│➵͜͡✪ *${totaljadibot.length}* Jadibot
+│➵͜͡✪ *${conn.blocklist.length}* Terblock
+│➵͜͡✪ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
+│➵͜͡✪ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
+┬
+├━━━━━━━━━━━━━━━━┈─⋆
+┴ ▸ Owner : *Fachri*
+✧
+┬ 📌 Note :
+│ Tolong jangan dispam ya biar ga delay
+╰━━━━━━━━━━━━━━━━┈─◂
+     ▌│█║▌║▌║║▌║▌║█│▌
+     
+     ${week}, ${date}`,
+          "buttonText": "Click Here!",
+          "listType": "SINGLE_SELECT",
                         "sections": [
                             {
                                 "rows": [{
@@ -404,11 +416,10 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
                                 "title": "⟣─────────────「 Kata Penutup 」─────────────⟢"
                             }
                         ], "contextInfo": 
-						{ "stanzaId": m.key.id,
-                        "participant": "0@s.whatsapp.net",
-                        "remoteJid": "status@broadcast",
+                         { "stanzaId": m.key.id,
+                        "participant": m.sender,
                         "quotedMessage": m.message
-						}
+                        }
                     }
                  }, {}), {waitForAck: true})
     }
@@ -489,7 +500,38 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send2ButtonLoc(m.chat, await(await fetch(fla + teks)).buffer(), text.trim(), `Runtime : ${uptime}\n${week} ${date}`, 'Pemilik Bot', `${_p}owner`, 'Donasi', `${_p}donasi`, m)
+    // await conn.send3ButtonLoc(m.chat, await (await fetch(fla + teks)).buffer(), text.trim(), 'watermark', 'Owner', '.owner', 'Donasi', '.donasi', 'Rules', '.infobot', m)
+    await conn.send3ButtonLoc(m.chat, logo, '──────────[ *DASHBOARD* ]──────────', text.trim(), 'Owner', '.nowner', 'Donasi', '.donasi', 'Rules', '.rules', m)
+    let nama = await conn.getName(m.sender)
+    let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
+
+
+  logo2 = global.logo
+  kanna = fs.readFileSync('./src/RadBotZ.jpg')
+  kannaImg = (await conn.prepareMessage('0@s.whatsapp.net', kanna, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
+  sumberImg = await (await fetch(fla + teks + ' menu')).buffer()
+  image = (await conn.prepareMessage('0@s.whatsapp.net', logo2, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
+  /*res = await conn.prepareMessageFromContent(m.chat, {
+    "productMessage": {
+      "product": {
+        "productImage": image,
+        "productId": "4938174216214248",
+        "title": '✧───────···[ Menu ]···────────✧',
+        "description": `\n${wm}\n` + text,
+        "retailerId": `${week}, ${date}  |  By Fachri`,
+        "url": '\n',
+        "descriptionCount": "999999999",
+        "productImageCount": "1",
+      },
+      "businessOwnerJid": "0@s.whatsapp.net",
+      "contextInfo": {
+        "forwardingScore": 9999,
+        "isForwarded": true
+      }
+    }
+  },
+    { quoted: fkon })
+  conn.relayWAMessage(res)*/
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
@@ -516,16 +558,16 @@ function ucapan() {
   const time = moment.tz('Asia/Jakarta').format('HH')
   res = "Selamat dinihari🌃"
   if (time >= 4) {
-    res = "Selamat pagi🌄"
+    res = "Selamat pagi kak🌄"
   }
   if (time > 10) {
-    res = "Selamat siang🌄"
+    res = "Selamat siang kak🌄"
   }
   if (time >= 15) {
-    res = "Selamat sore🌇"
+    res = "Selamat sore kak🌇"
   }
   if (time >= 18) {
-    res = "Selamat malam🌉"
+    res = "Selamat malam kak🌉"
   }
   return res
 }
