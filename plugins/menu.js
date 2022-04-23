@@ -525,10 +525,10 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 
 
   logo2 = global.logo
-  kanna = fs.readFileSync('./src/RadbotZ.jpg')
-  kannaImg = (await conn.prepareMessage('0@s.whatsapp.net', kanna, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
+  kanna = fs.readFileSync('./src/RadBot.png')
+  kannaImg = (await conn.prepareMessage('0@s.whatsapp.net', RadBotZ, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
   sumberImg = await (await fetch(fla + teks + ' menu')).buffer()
-  image = (await conn.prepareMessage('0@s.whatsapp.net', logo2, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
+  image = (await conn.prepareMessage('0@s.whatsapp.net', RadBot, MessageType.image, { thumbnail: Buffer.alloc(0) })).message.imageMessage
   /*res = await conn.prepareMessageFromContent(m.chat, {
     "productMessage": {
       "product": {
@@ -536,7 +536,7 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
         "productId": "4938174216214248",
         "title": '✧───────···[ Menu ]···────────✧',
         "description": `\n${wm}\n` + text,
-        "retailerId": `${week}, ${date}  |  ʙʏ ʟᴇᴛᴛᴀ-sᴀᴍᴀ ‷♪`,
+        "retailerId": `${week}, ${date}  |  ʙʏ Fachri`,
         "url": '\n',
         "descriptionCount": "999999999",
         "productImageCount": "1",
