@@ -10,31 +10,31 @@ let handler = async (m, { conn }) => {
 
     let str = `
 ╭═════════════════
-║╭─❉ [𝐈𝐍𝐅𝐎𝐁𝐎𝐓] ❉───
-║│➸ NameBot: FachriBotz
-║│➸ Main Owner: Fachri
-║│➸ Operated Since: Jum'at, 15 April 2022
-║│➸ Language Used: Nodejs (JS)
-║│➸ Server: Heroku
-║╰───────────────
+║╭─✧ [ 𝐈𝐍𝐅𝐎𝐁𝐎𝐓 ] ✧───
+║│➵͜͡✪ NameBot: FachriBotz
+║│➵͜͡✪ Main Owner: Fachri
+║│➵͜͡✪ Operated Since: Jum'at, 15 April 2022
+║│➵͜͡✪ Language Used: Nodejs (JS)
+║│➵͜͡✪ Server: Heroku
+║╰───────────────···✧
 ╰════════════════
 
 ╭═════════════════
-║╭──❉ [𝐒𝐓𝐀𝐓𝐔𝐒] ❉──
-║│➸ Aktif selama ${uptime}
-║│➸ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
-║│➸ *${groups.length}* Grup
-║│➸ *${chats.length - groups.length}* Chat Pribadi
-║│➸ *${Object.keys(global.db.data.users).length}* Pengguna
-║│➸ *${totaljadibot.length}* Jadibot
-║│➸ *${conn.blocklist.length}* Terblock
-║│➸ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
-║│➸ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
-║╰───────────────
+║╭──✧ [ 𝐒𝐓𝐀𝐓𝐔𝐒 ] ✧──
+║│➵͜͡✪ Aktif selama ${uptime}
+║│➵͜͡✪ Baterai ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
+║│➵͜͡✪ *${groups.length}* Grup
+║│➵͜͡✪ *${chats.length - groups.length}* Chat Pribadi
+║│➵͜͡✪ *${Object.keys(global.db.data.users).length}* Pengguna
+║│➵͜͡✪ *${totaljadibot.length}* Jadibot
+║│➵͜͡✪ *${conn.blocklist.length}* Terblock
+║│➵͜͡✪ *${Object.entries(global.db.data.chats).filter(chat => chat[1].isBanned).length}* Chat Terbanned
+║│➵͜͡✪ *${Object.entries(global.db.data.users).filter(user => user[1].banned).length}* Pengguna Terbanned
+║╰───────────────···✧
 ╰════════════════
 
 ╭════════════════
-║╭──❉ [𝐏𝐄𝐍𝐆𝐀𝐓𝐔𝐑𝐀𝐍〕❉─
+║╭──✧ [ 𝐏𝐄𝐍𝐆𝐀𝐓𝐔𝐑𝐀𝐍 ] ✧─
 ║│➸ ${anon ? '✅' : '❌'} *Anon Chat*
 ║│➸ ${anticall ? '✅' : '❌'} *Anti Call*
 ║│➸ ${antispam ? '✅' : '❌'} *Anti Spam*
@@ -43,7 +43,7 @@ let handler = async (m, { conn }) => {
 ║│➸ ${groupOnly ? '✅' : '❌'} *Mode Grup*
 ║│➸ ${jadibot ? '✅' : '❌'} *Jadi Bot*
 ║│➸ ${nsfw ? '✅' : '❌'} *Mode Nsfw*
-║╰─────────────────
+║╰─────────────────···✧
 ╰══════════════════`.trim()
      await conn.send2ButtonLoc(m.chat, await(await fetch(image)).buffer(), str, '© ᴹᴿ᭄ Fachri botz ×፝֟͜×', 'Owner👤', '.owner', 'Menu🧾', '.menu', m)
 }
