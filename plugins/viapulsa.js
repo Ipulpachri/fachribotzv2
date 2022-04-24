@@ -3,7 +3,7 @@ let info = `╠═〘 PEMBAYARAN 〙 ═
 ╠═ Untuk Pembayaran Via Pulsa
 ╠➥ *08159917553*
 ╠➥ Chat Owner:
-║- wa.me/60189830350
+║- wa.me/6285713041886
 ╠═〘 FachriBotz 〙 ═
 `.trim()
 
