@@ -12,18 +12,18 @@ let handler  = async (m, { conn, usedPrefix }) => {
   let neww = Math.round(performance.now())
   let str = `
 ╭═══════════════════════
-║╭─❉〘 FachriBotz 〙❉─
-║│➸ *Versi* : 1.5.0
-║│➸ *Issue:* ${package.bugs.url}
-║│➸ *Prefix:* ' ${usedPrefix} '
-║│➸ *Menu:* ${usedPrefix}menu
-║│➸ *Ping:* ${neww - old} *ms*
-║│➸ *Total user:* ${totalreg} *user*
-║│➸ *Uptime:* ${uptime}
-║╰──────────────────
+║╭─✧ 〘 FachriBotz 〙 ✧─
+║│➵͜͡✪ *Versi* : 1.5.0
+║│➵͜͡✪ *Issue:* ${package.bugs.url}
+║│➵͜͡✪ *Prefix:* ' ${usedPrefix} '
+║│➵͜͡✪ *Menu:* ${usedPrefix}menu
+║│➵͜͡✪ *Ping:* ${neww - old} *ms*
+║│➵͜͡✪ *Total user:* ${totalreg} *user*
+║│➵͜͡✪ *Uptime:* ${uptime}
+║╰──────────────────···✧
 ╰══════════════════════
 ╭══════════════════════
-║╭─❉〘 PRIVACY BOT 〙❉─
+║╭─✧ 〘 PRIVACY BOT 〙 ✧─
 ║│➸ Kami Tidak Bertanggung
 ║│➸ Atas Penyalahan 
 ║│➸ Gunaan Bot
@@ -33,7 +33,7 @@ let handler  = async (m, { conn, usedPrefix }) => {
 ║│➸ Kami Akan Menyimpan
 ║│➸ Nomer Telefon
 ║│➸ Anda di database kami
-║╰─────────────────
+║╰─────────────────···✧
 ╰══════════════════════`.trim()
      await conn.send2ButtonLoc(m.chat, await(await fetch(image)).buffer(), str, '© ᴹᴿ᭄ Fachri botz ×፝֟͜×', 'Owner', '.owner', 'Menu', '.menu', m)
 }
