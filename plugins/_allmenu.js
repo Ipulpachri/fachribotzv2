@@ -301,7 +301,7 @@ Hai Kak, %name
 %readmore
 
 `
-    let header = conn.menu.header || '┏━━✧「 *%category* 」✧━━'
+    let header = conn.menu.header || '┏━━✧ 「 *%category* 」 ✧━━'
 
     let body   = conn.menu.body   || '┃ 〲⎙ %cmd %islimit %isPremium'
 
