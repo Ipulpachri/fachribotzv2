@@ -235,9 +235,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
     if (teks == '404') {
 			return conn.relayWAMessage(conn.prepareMessageFromContent(m.chat, {
                     "listMessage":  {
-                        "title": `✧────────···[ MENU ]···─────────✧`.trim(),
-                        "description": `*${ucapan()}, ${name}*`.trim(),
-                        "footerText": `┏━━✧ 「 𝐒𝐓𝐀𝐓𝐔𝐒 」 ✧━━
+                        "title": `*${ucapan()}, ${name}*`.trim(),
+                        "description": `┏━━✧ 「 𝐒𝐓𝐀𝐓𝐔𝐒 」 ✧━━
 ┃➵͜͡✪ 𝘼𝙠𝙩𝙞𝙛 𝙎𝙚𝙡𝙖𝙢𝙖 _*${uptime}*_
 ┃➵͜͡✪ 𝘽𝙖𝙩𝙚𝙧𝙖𝙞 _*${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}*_
 ┃➵͜͡✪ _*${Object.keys(global.db.data.users).length}*_ 𝙋𝙚𝙣𝙜𝙜𝙪𝙣𝙖
@@ -253,7 +252,8 @@ let handler = async (m, { conn, usedPrefix: _p, args, command }) => {
 ┃   
 ┃   ${week} ${date}
 ┃
-┗━━━━━━━━···✧`,
+┗━━━━━━━━···✧`.trim(),
+                        "footerText": "Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada owner.",
                         "buttonText": "Klik Disini",
                         "listType": "SINGLE_SELECT",
                         "sections": [
